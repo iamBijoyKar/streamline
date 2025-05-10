@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-
+import CountUp from "react-countup"
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import {
@@ -69,6 +69,10 @@ export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [videoModalOpen, setVideoModalOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   // Intersection observer hooks for animations
   const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.1 })
@@ -485,9 +489,9 @@ export default function LandingPage() {
                     "Automate repetitive tasks, streamline workflows, and eliminate bottlenecks to help your team focus on what matters most.",
                   image: productivitySvg,
                   stats: [
-                    { value: "40%", label: "Productivity Increase" },
-                    { value: "25+", label: "Hours Saved Weekly" },
-                    { value: "3x", label: "Faster Deployment" },
+                    { value: "40", label: "Productivity Increase", valAfter: "%" },
+                    { value: "25", label: "Hours Saved Weekly", valAfter: "+" },
+                    { value: "3", label: "Faster Deployment", valAfter: "x" },
                   ],
                   reverse: false,
                 },
@@ -497,9 +501,9 @@ export default function LandingPage() {
                     "Consolidate your tech stack, eliminate redundant tools, and optimize resource allocation to significantly cut operational expenses.",
                   image: reduceCostSvg,
                   stats: [
-                    { value: "30%", label: "Cost Reduction" },
-                    { value: "60%", label: "Less Tool Overlap" },
-                    { value: "$10k+", label: "Annual Savings" },
+                    { value: "30", label: "Cost Reduction", valAfter: "%" },
+                    { value: "60", label: "Less Tool Overlap", valAfter: "%" },
+                    { value: "10", label: "Annual Savings", valAfter: "k+", valBefore: "$" },
                   ],
                   reverse: true,
                 },
@@ -509,9 +513,9 @@ export default function LandingPage() {
                     "Break down silos with real-time collaboration features, centralized communication, and transparent project management.",
                   image: collaborationSvg,
                   stats: [
-                    { value: "85%", label: "Improved Clarity" },
-                    { value: "50%", label: "Fewer Meetings" },
-                    { value: "100%", label: "Team Visibility" },
+                    { value: "85", label: "Improved Clarity", valAfter: "%" },
+                    { value: "50", label: "Fewer Meetings", valAfter: "%" },
+                    { value: "100", label: "Team Visibility", valAfter: "%" },
                   ],
                   reverse: false,
                 },
@@ -530,7 +534,23 @@ export default function LandingPage() {
                     <div className="grid grid-cols-3 gap-4 pt-4">
                       {benefit.stats.map((stat, j) => (
                         <div key={j} className="space-y-2">
-                          <div className="text-3xl font-bold text-primary">{stat.value}</div>
+                          <div className="text-3xl text-primary font-bold flex items-center gap-[2px]">
+                            {stat.valBefore && <span>{stat.valBefore}</span>}
+                            {mounted ? (
+                              <CountUp
+                                start={0}
+                                end={parseInt(stat.value)}
+                                duration={2}
+                                separator=","
+                                preserveValue
+                                enableScrollSpy
+                                scrollSpyOnce
+                              />
+                            ) : (
+                              stat.value
+                            )}
+                            {stat.valAfter && <span>{stat.valAfter}</span>}
+                          </div>
                           <div className="text-sm text-muted-foreground">{stat.label}</div>
                         </div>
                       ))}
