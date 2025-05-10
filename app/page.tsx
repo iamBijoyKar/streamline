@@ -23,7 +23,8 @@ import {
   Zap,
 } from "lucide-react"
 import VideoModal from "@/components/video-modal"
-
+import { useToast } from "@/hooks/use-toast"
+import { Toaster } from "@/components/ui/toaster"
 // Animation variants
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -54,6 +55,7 @@ const fadeInUp = {
 }
 
 export default function LandingPage() {
+  const { toast } = useToast()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [videoModalOpen, setVideoModalOpen] = useState(false)
@@ -213,15 +215,22 @@ export default function LandingPage() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveTestimonial((prev) => (prev + 1) % testimonials.length)
-    }, 5000)
+    }, 10000)
     return () => clearInterval(interval)
   }, [testimonials.length])
+
+  useEffect(() => {
+    toast({
+      title: "This is a UI showcase site",
+      description: "This website is a showcase site and it is not a real product. ",
+    })
+  }, [])
 
   return (
     <div className="flex min-h-[100dvh] flex-col">
       {/* Video Modal */}
       <VideoModal isOpen={videoModalOpen} onClose={() => setVideoModalOpen(false)} />
-
+      <Toaster />
       {/* Header */}
       <header
         className={`fixed top-0 z-50 w-full backdrop-blur-md transition-all duration-300 ${
