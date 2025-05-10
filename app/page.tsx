@@ -349,7 +349,7 @@ export default function LandingPage() {
 
       <main className="flex-1 pt-16">
         {/* Hero Section */}
-        <section ref={heroRef} className="w-full py-20 md:py-32 lg:py-40 overflow-hidden relative">
+        <section ref={heroRef} className="w-full py-20 md:py-32 2xl:py-40 overflow-hidden relative">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
           <div className="container px-4 md:px-6 relative">
             <motion.div

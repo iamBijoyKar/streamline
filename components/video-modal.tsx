@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { X } from "lucide-react"
 
@@ -27,6 +27,9 @@ export default function VideoModal({ isOpen, onClose }: VideoModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[800px] p-0 overflow-hidden bg-black">
+        <DialogTitle className="text-white text-center text-lg font-semibold py-2">
+          Does not have a demo, so Rick Roll instead
+        </DialogTitle>
         <div className="absolute top-2 right-2 z-10">
           <Button variant="ghost" size="icon" onClick={onClose} className="text-white hover:bg-white/20">
             <X className="h-4 w-4" />
