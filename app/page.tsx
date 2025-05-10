@@ -25,6 +25,16 @@ import {
 import VideoModal from "@/components/video-modal"
 import { useToast } from "@/hooks/use-toast"
 import { Toaster } from "@/components/ui/toaster"
+
+import googleSvg from "@/assets/google.svg"
+import digitalOceanSvg from "@/assets/digital-ocean.svg"
+import bmwSvg from "@/assets/bmw.svg"
+import macdonaldSvg from "@/assets/mcdonald.svg"
+import microsoftSvg from "@/assets/microsoft.svg"
+import productivitySvg from "@/assets/productivity.svg"
+import collaborationSvg from "@/assets/collaboration.svg"
+import reduceCostSvg from "@/assets/reduce-cost.svg"
+
 // Animation variants
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -89,26 +99,27 @@ export default function LandingPage() {
     {
       quote:
         "StreamLine has transformed how we manage our projects. The intuitive interface and powerful features have boosted our productivity by 40%.",
-      name: "Sarah Johnson",
+      name: "Michael Chen",
       title: "CEO",
       company: "TechStart",
-      avatar: "/placeholder.svg?height=80&width=80&text=SJ",
+      avatar: "/darshan-patel.jpg?height=80&width=80&text=SJ",
     },
     {
       quote:
         "The analytics capabilities are outstanding. We can now make data-driven decisions faster than ever before, giving us a competitive edge.",
-      name: "Michael Chen",
+      name: "Sarah Johnson",
+
       title: "CTO",
       company: "GrowthLabs",
-      avatar: "/placeholder.svg?height=80&width=80&text=MC",
+      avatar: "/jake-nackos.jpg?height=80&width=80&text=MC",
     },
     {
       quote:
         "The customer support is exceptional. Whenever we've had questions, the team has been responsive and helpful. Highly recommend!",
-      name: "Emily Rodriguez",
+      name: "Jonas Kakaroto",
       title: "Operations Manager",
       company: "ScaleUp",
-      avatar: "/placeholder.svg?height=80&width=80&text=ER",
+      avatar: "/jonas-kakaroto.jpg?height=80&width=80&text=ER",
     },
     {
       quote:
@@ -116,7 +127,7 @@ export default function LandingPage() {
       name: "David Park",
       title: "Product Manager",
       company: "InnovateX",
-      avatar: "/placeholder.svg?height=80&width=80&text=DP",
+      avatar: "/leilani-angel.jpg?height=80&width=80&text=DP",
     },
   ]
 
@@ -195,7 +206,7 @@ export default function LandingPage() {
     {
       title: "Enterprise",
       price: "$199",
-      description: "For large organizations with complex requirements",
+      description: "For large organizations with complex needs",
       features: [
         "Unlimited team members",
         "500GB storage",
@@ -358,7 +369,7 @@ export default function LandingPage() {
 
       <main className="flex-1 pt-16">
         {/* Hero Section */}
-        <section ref={heroRef} className="w-full py-20 md:py-32 2xl:py-40 overflow-hidden relative">
+        <section ref={heroRef} className="w-full py-20 md:py-28  2xl:py-40 overflow-hidden relative">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
           <div className="container px-4 md:px-6 relative">
             <motion.div
@@ -389,17 +400,11 @@ export default function LandingPage() {
               <div className="pt-8">
                 <p className="text-sm text-muted-foreground mb-3">Trusted by innovative companies</p>
                 <div className="flex flex-wrap justify-center gap-8 opacity-70">
-                  {["Company 1", "Company 2", "Company 3", "Company 4", "Company 5"].map((company, i) => (
-                    <div key={i} className="h-8">
-                      <Image
-                        src={`/placeholder.svg?height=32&width=${80 + i * 10}&text=${company}`}
-                        alt={company}
-                        width={80 + i * 10}
-                        height={32}
-                        className="h-full w-auto"
-                      />
-                    </div>
-                  ))}
+                  <Image src={googleSvg} alt="Google" width={30} height={30} className="grayscale hover:grayscale-0 transition-all duration-300 ease-in-out" />
+                  <Image src={microsoftSvg} alt="Google" width={30} height={30} className="grayscale hover:grayscale-0 transition-all duration-300 ease-in-out" />
+                  <Image src={bmwSvg} alt="Google" width={30} height={30} className="grayscale hover:grayscale-0 transition-all duration-300 ease-in-out" />
+                  <Image src={macdonaldSvg} alt="Google" width={30} height={30} className="grayscale hover:grayscale-0 transition-all duration-300 ease-in-out" />
+                  <Image src={digitalOceanSvg} alt="Google" width={30} height={30} className="grayscale hover:grayscale-0 transition-all duration-300 ease-in-out" />
                 </div>
               </div>
             </motion.div>
@@ -478,7 +483,7 @@ export default function LandingPage() {
                   title: "Boost Productivity by 40%",
                   description:
                     "Automate repetitive tasks, streamline workflows, and eliminate bottlenecks to help your team focus on what matters most.",
-                  image: "/placeholder.svg?height=400&width=500&text=Productivity",
+                  image: productivitySvg,
                   stats: [
                     { value: "40%", label: "Productivity Increase" },
                     { value: "25+", label: "Hours Saved Weekly" },
@@ -490,7 +495,7 @@ export default function LandingPage() {
                   title: "Reduce Operational Costs",
                   description:
                     "Consolidate your tech stack, eliminate redundant tools, and optimize resource allocation to significantly cut operational expenses.",
-                  image: "/placeholder.svg?height=400&width=500&text=Cost Savings",
+                  image: reduceCostSvg,
                   stats: [
                     { value: "30%", label: "Cost Reduction" },
                     { value: "60%", label: "Less Tool Overlap" },
@@ -502,7 +507,7 @@ export default function LandingPage() {
                   title: "Enhance Team Collaboration",
                   description:
                     "Break down silos with real-time collaboration features, centralized communication, and transparent project management.",
-                  image: "/placeholder.svg?height=400&width=500&text=Collaboration",
+                  image: collaborationSvg,
                   stats: [
                     { value: "85%", label: "Improved Clarity" },
                     { value: "50%", label: "Fewer Meetings" },
